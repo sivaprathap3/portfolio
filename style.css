@@ -1,0 +1,526 @@
+@import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* ------------------------------
+1. common styles
+2. remove watermark
+3. container & others
+4. preloader animation
+5. scroll reveal
+6. laptop styles
+7. tablet styles
+8. mobile styles
+------------------------------ */
+
+/* ------------------------------
+1. common styles
+------------------------------ */
+:root {
+    --blue: #003366;
+    --black: #0d0d0d;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Reggae One', cursive;
+    font-weight: bold;
+    color: white;
+    scroll-behavior: smooth;
+}
+body {
+    background-color: var(--blue);
+}
+
+/* ------------------------------
+2. remove watermark
+------------------------------ */
+img[alt="www.000webhost.com"] {
+    display: none;
+}
+
+/* ------------------------------
+3. container & others
+------------------------------ */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+    'mypic myself'
+    'about about'
+    'webdev programming'
+    'project1 project1'
+    'contact contact';
+    padding-top: 67px; /*to avoid overlay of fixed navbar */
+}
+.container > div {
+    padding: 1rem;
+    scroll-margin-top: 67px; /*to avoid overlay of fixed navbar */
+}
+.mid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.underline {
+    text-align: center;
+    text-decoration: underline 3px solid gray;
+    text-underline-offset: 6px;
+    text-shadow: 1.7px 1.7px black;
+    margin-bottom: .5rem !important;
+}
+
+/* ------------------------------
+4. preloader animation
+------------------------------ */
+.preloader {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    bottom: 0;
+    transition: bottom 1s;
+}
+.preloader-hide {
+    bottom: 100vh;
+}
+.preloader div {
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    animation: loading 2s ease-in-out infinite;
+}
+@keyframes loading {
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+        /* rotate x 180deg | y stays same */
+    }
+    100% {
+        transform: perspective(120px) rotatex(-180deg) rotateY(-180deg);
+        /* x stays same | rotate y 180deg */
+    }
+}
+.preloader p {
+    margin-top: 20px;
+    color: black;
+}
+
+/* ------------------------------
+5. scroll reveal
+------------------------------ */
+.reveal {
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+.reveal-first {
+    transform: translateY(150px);
+    transition: opacity 1.5s, transform 1.5s;
+}
+.reveal-active {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+/* ------------------------------
+(6. laptop styles)
+1. navbar
+2. my pic
+3. who am i
+4. about me
+5. skills (common)
+6. web development skills
+7. programming skills
+8. project
+9. contact me
+10. copyright
+------------------------------ */
+
+/* ------------------------------
+1. navbar
+------------------------------ */
+.navbar {
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: var(--black);
+}
+.navbar > * {
+    padding: 1rem;
+}
+.navbar-logo {
+    flex: 1;
+    font-size: 1.5rem;
+    user-select: none;
+}
+.navbar-links {
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+.navbar-links:hover {
+    color: black;
+    background-color: cyan;
+}
+#navbar-toggle {
+    display: none; 
+}
+
+/* ------------------------------
+2. my pic
+------------------------------ */
+.mypic {
+    grid-area: mypic;
+}
+.mypic img {
+    width: 75%;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+/* ------------------------------
+3. who am i
+------------------------------ */
+.myself {
+    grid-area: myself;
+    font-size: 3rem;
+    line-height: 1.7;
+}
+.myself p {
+    text-shadow: 3px 3px black;
+}
+#typing {
+    color: pink;
+}
+#cursor {
+    font-family: arial;
+    font-size: 3.8rem;
+    color: red;
+    animation: blinker 1s infinite;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ------------------------------
+4. about me
+------------------------------ */
+.about {
+    grid-area: about;
+    font-size: 1.3rem;
+    line-height: 1.7;
+}
+.about a {
+    color: yellow;
+}
+
+/* ------------------------------
+5. skills (common)
+------------------------------ */
+.skills p:first-child {
+    font-size: 1.3rem;
+}
+.skills p:not(:first-child) {
+    padding: 1.5vh 0;
+}
+.contain {
+    width: 100%;
+    background-color: #ddd;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.bar {
+    text-align: right;
+    padding: 0.5vh 0.5vw 0.5vh 0;
+    color: black;
+    border-right: 2px solid black;
+    border-radius: 5px;
+}
+
+/* ------------------------------
+6. web development skills
+------------------------------ */
+.webdev {
+    grid-area: webdev;
+}
+.webdev .bar {
+    background-color: yellow;
+}
+.html {width: 90%;}
+.css {width: 80%;}
+.js {width: 80%;}
+.php {width: 75%;}
+.mysql {width: 75%;}
+
+/* ------------------------------
+7. programming skills
+------------------------------ */
+.programming {
+    grid-area: programming;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.programming .bar {
+    background-color: lightgreen;
+}
+.c {width: 90%;}
+.cpp {width: 90%;}
+.java {width: 80%;}
+.python {width: 80%;}
+
+/* ------------------------------
+8. project
+------------------------------ */
+.project {
+    font-size: 1.3rem;
+}
+.project video {
+    margin-top: 0.8rem;
+    width: 50%;
+    border: 2px solid black;
+}
+#project1 {
+    grid-area: project1;
+}
+
+/* ------------------------------
+9. contact me
+------------------------------ */
+.contact {
+    grid-area: contact;
+    font-size: 1.2rem;
+    line-height: 2;
+}
+.contact a {
+    color: yellow;
+}
+
+/* ------------------------------
+10. copyright
+------------------------------ */
+#copyright {
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    user-select: none;
+}
+
+/* ------------------------------
+(7. tablet styles)
+1. container
+2. navbar
+3. my pic
+4. who am i
+5. common font size
+6. skills (common)
+7. project
+8. contact me
+9. copyright
+------------------------------ */
+
+@media (max-width: 800px) {
+/* ------------------------------
+1. container
+------------------------------ */
+    .container {
+        padding-top: 57.6px;
+    }
+    .container > div {
+        scroll-margin-top: 57.6px;
+    }
+
+/* ------------------------------
+2. navbar
+------------------------------ */
+    .navbar > * {
+        padding: 0.8rem;
+    }
+    .navbar-logo {
+        font-size: 1.4rem;
+    }
+
+/* ------------------------------
+3. my pic
+------------------------------ */
+    .mypic img {
+        width: 90%;
+    }
+
+/* ------------------------------
+4. who am i
+------------------------------ */
+    .myself {
+        font-size: 1.8rem;
+        line-height: 1.6;
+    }
+    .myself p {
+        text-shadow: 2.5px 2.5px black;
+    }
+    #cursor {
+        font-size: 2.4rem;
+    }
+
+/* ------------------------------
+5. common font size
+------------------------------ */
+    .about, .skills p:first-child, .project {
+        font-size: 1.2rem;
+    }
+
+/* ------------------------------
+6. skills (common)
+------------------------------ */
+    .skills p:not(:first-child) {
+        padding: 1.2vh 0;
+    }
+    .bar {
+        padding: 0.3vh 0.5vw 0.3vh 0;
+    }
+
+/* ------------------------------
+7. project
+------------------------------ */
+    .project video {
+        width: 60%;
+    }
+
+/* ------------------------------
+8. contact me
+------------------------------ */
+    .contact {
+        font-size: 1.1rem;
+    }
+
+/* ------------------------------
+9. copyright
+------------------------------ */
+    #copyright {
+    font-size: 1rem;
+    }
+}
+
+/* ------------------------------
+(8. mobile styles)
+1. container
+2. navbar
+3. my pic
+4. who am i
+5. common font size
+6. skills (common)
+7. project
+8. copyright
+------------------------------ */
+
+@media (max-width: 500px) {
+/* ------------------------------
+1. container
+------------------------------ */
+    .container {
+        grid-template-areas:
+        'mypic mypic'
+        'myself myself'
+        'about about'
+        'webdev webdev'
+        'programming programming'
+        'project1 project1'
+        'contact contact';
+        padding-top: 52.4px;
+    }
+    .container > div {
+        scroll-margin-top: 52.4px;
+    }
+
+/* ------------------------------
+2. navbar
+------------------------------ */
+    .navbar {
+        flex-wrap: wrap;
+    }
+    .navbar > * {
+        padding: 0.7rem;
+    }
+    #navbar-toggle {
+        display: block;
+        font-size: 1.1rem;
+    }
+    .navbar-logo {
+        font-size: 1.3rem;
+    }
+    .navbar-links {
+        display: none;
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+    }
+    .active {
+        display: block;
+    }
+
+/* ------------------------------
+3. my pic
+------------------------------ */
+    .mypic img {
+        width: 100%;
+    }
+
+/* ------------------------------
+4. who am i
+------------------------------ */
+    .myself {
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+    .myself p {
+        text-shadow: 2px 2px black;
+    }
+    #cursor {
+        font-size: 1.8rem;
+    }
+
+/* ------------------------------
+5. common font size
+------------------------------ */
+    .about, .skills p:first-child, .project, .contact {
+        font-size: 1rem;
+    }
+
+/* ------------------------------
+6. skills (common)
+------------------------------ */
+    .skills {
+        font-size: 0.9rem;
+    }
+    .skills p:not(:first-child) {
+        padding: 1vh 0;
+    }
+    .bar {
+        padding: 0.3vh 1vw 0.3vh 0;
+    }
+
+/* ------------------------------
+7. project
+------------------------------ */
+    .project video {
+        width: 100%;
+    }
+
+/* ------------------------------
+8. copyright
+------------------------------ */
+    #copyright {
+        font-size: 0.9rem;
+    }
+}
